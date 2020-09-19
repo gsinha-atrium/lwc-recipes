@@ -20,7 +20,7 @@ jobs:
                 java-version: 1.8
             # Install Salesforce CLI Scanner
             - name: Install Salesforce CLI Scanner
-              run: 'sfdx plugins:install @salesforce/sfdx-scanner | echo 'y''
+              run: 'sfdx plugins:install @salesforce/sfdx-scanner | echo "y"'
             # Run Salesforce CLI Scanner For Security checks
             - name: Scan For Security Exceptions
               run: 'sfdx scanner:run -c=Security -t=/Users/mohith.shrivastava/Desktop/Projects/lwc-recipes/force-app -f=json -v'
