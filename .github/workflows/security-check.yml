@@ -1,0 +1,27 @@
+# Unique name for this workflow
+name: Run Security checks
+
+# Definition when the workflow should run
+on:
+    push:
+        branches-ignore:
+            - mo/security
+
+# Jobs to be executed
+jobs:
+    security-check:
+        runs-on: ubuntu-latest
+        steps:
+            # Setup Java SDK
+            - name: Set up JDK 1.8
+              uses: actions/checkout@v2
+              uses: actions/setup-java@v1
+              with:
+                java-version: 1.8
+            # Install Salesforce CLI Scanner
+            - name: Install Salesforce CLI Scanner
+              run: 'sfdx plugins:install @salesforce/sfdx-scanner | echo 'y''
+            # Run Salesforce CLI Scanner For Security checks
+            - name: Scan For Security Exceptions
+              run: 'sfdx scanner:run -c=Security -t=/Users/mohith.shrivastava/Desktop/Projects/lwc-recipes/force-app -f=json -v'
+
