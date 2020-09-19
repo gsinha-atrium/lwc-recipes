@@ -32,5 +32,5 @@ jobs:
               uses: actions/checkout@v2
             # Run Salesforce CLI Scanner For Security checks
             - name: Scan For Security Exceptions
-              run: 'sfdx scanner:run -c=Security -t=/Users/mohith.shrivastava/Desktop/Projects/lwc-recipes/force-app -f=json -v'
+              run: 'sfdx scanner:run -c=Security -t=./force-app -f=json -v'
 
