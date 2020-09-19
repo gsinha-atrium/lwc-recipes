@@ -17,12 +17,19 @@ jobs:
               uses: actions/setup-java@v1
               with:
                 java-version: 1.8
-            # Checkout the code in the pull request
-            - name: 'Checkout source code'
-              uses: actions/checkout@v2
+            # Install Salesforce CLI
+            - name: Install Salesforce CLI
+              run: |
+                  wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+                  mkdir sfdx-cli
+                  tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+                  ./sfdx-cli/install
             # Install Salesforce CLI Scanner
             - name: Install Salesforce CLI Scanner
               run: 'sfdx plugins:install @salesforce/sfdx-scanner | echo "y"'
+            # Checkout the code in the pull request
+            - name: 'Checkout source code'
+              uses: actions/checkout@v2
             # Run Salesforce CLI Scanner For Security checks
             - name: Scan For Security Exceptions
               run: 'sfdx scanner:run -c=Security -t=/Users/mohith.shrivastava/Desktop/Projects/lwc-recipes/force-app -f=json -v'
