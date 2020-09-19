@@ -4,7 +4,7 @@ name: Run Security checks
 # Definition when the workflow should run
 on:
     push:
-        branches-ignore:
+        branches:
             - mo/security
 
 # Jobs to be executed
