@@ -26,7 +26,7 @@ jobs:
                   ./sfdx-cli/install
             # Install Salesforce CLI Scanner
             - name: Install Salesforce CLI Scanner
-              run: 'sfdx plugins:install @salesforce/sfdx-scanner | echo "y"'
+              run: 'echo y | sfdx plugins:install @salesforce/sfdx-scanner'
             # Checkout the code in the pull request
             - name: 'Checkout source code'
               uses: actions/checkout@v2
